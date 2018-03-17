@@ -55,7 +55,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       template: 'index.html',
       inject: true,
       favicon: resolve('favicon.ico'),
-      title: 'Fugu'
+      title: 'fugu',
+      path: config.dev.assetsPublicPath + config.dev.assetsSubDirectory
     }),
   ]
 })
