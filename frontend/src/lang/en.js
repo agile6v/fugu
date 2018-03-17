@@ -2,7 +2,6 @@ export default {
   route: {
     dashboard: 'Dashboard',
     job: 'Job',
-    node: 'Node',
     cluster: 'Cluster',
     settings: 'Settings',
     user: 'User',

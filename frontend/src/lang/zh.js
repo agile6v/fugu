@@ -2,7 +2,6 @@ export default {
   route: {
     dashboard: '首页',
     job: '任务',
-    node: '节点',
     cluster: '集群',
     settings: '系统设置',
     user: '用户',

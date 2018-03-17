@@ -56,12 +56,6 @@ export const asyncRouterMap = [
   },
 
   {
-    path: '/node',
-    component: Layout,
-    children: [{ path: 'index', component: _import('node/index'), name: 'node', meta: { title: 'node', icon: 'international' }}]
-  },
-
-  {
     path: '/cluster',
     component: Layout,
     redirect: 'noredirect',
