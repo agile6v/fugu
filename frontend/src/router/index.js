@@ -52,7 +52,7 @@ export const asyncRouterMap = [
   {
     path: '/job',
     component: Layout,
-    children: [{ path: 'index', component: _import('job/index'), name: 'job', meta: { title: 'job', icon: 'international' }}]
+    children: [{ path: 'index', component: _import('job/index'), name: 'job', meta: { title: 'job', icon: 'container' }}]
   },
 
   {
@@ -62,7 +62,7 @@ export const asyncRouterMap = [
     name: 'cluster',
     meta: {
       title: 'cluster',
-      icon: 'table'
+      icon: 'container_cluster'
     },
     children: [
       { path: 'mesos', component: _import('cluster/mesos'), name: 'mesos', meta: { title: 'mesos', icon: 'table' }},
