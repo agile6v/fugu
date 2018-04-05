@@ -20,7 +20,8 @@ export default {
     height: {
       type: String,
       default: '300px'
-    }
+    },
+    resource_type: String
   },
   data() {
     return {
@@ -28,7 +29,7 @@ export default {
     }
   },
   mounted() {
-    this.initChart()
+    this.initChart(this.resource_type)
     this.__resizeHanlder = debounce(() => {
       if (this.chart) {
         this.chart.resize()
@@ -45,36 +46,52 @@ export default {
     this.chart = null
   },
   methods: {
-    initChart() {
+    initChart(resource_type) {
       this.chart = echarts.init(this.$el, 'macarons')
 
       this.chart.setOption({
+        title: {
+          text: this.resource_type,
+          left: 'center'
+        },
         tooltip: {
           trigger: 'item',
-          formatter: '{a} <br/>{b} : {c} ({d}%)'
+          formatter: '{a} <br/>{b}: {c} ({d}%)'
         },
         legend: {
           left: 'center',
-          bottom: '10',
-          data: ['Industries', 'Technology', 'Forex', 'Gold', 'Forecasts']
+          bottom: '10'
         },
         calculable: true,
         series: [
           {
-            name: 'WEEKLY WRITE ARTICLES',
             type: 'pie',
-            roseType: 'radius',
-            radius: [15, 95],
-            center: ['50%', '38%'],
+            radius: '65%',
+            center: ['50%', '50%'],
+            selectedMode: 'single',
+            label: {
+              normal: {
+                position: 'inner'
+              }
+            },
+            labelLine: {
+              normal: {
+                show: false
+              }
+            },
             data: [
-              { value: 320, name: 'Industries' },
-              { value: 240, name: 'Technology' },
-              { value: 149, name: 'Forex' },
-              { value: 100, name: 'Gold' },
-              { value: 59, name: 'Forecasts' }
+              { value: 634, name: 'Free 30%', selected: true },
+              { value: 735, name: 'Used 70%' }
             ],
+            itemStyle: {
+              emphasis: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: 'rgba(0, 0, 0, 0.5)'
+              }
+            },
             animationEasing: 'cubicInOut',
-            animationDuration: 2600
+            animationDuration: 1500
           }
         ]
       })
