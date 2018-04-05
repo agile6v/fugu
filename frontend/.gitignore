@@ -1,0 +1,10 @@
+package-lock.json
+node_modules
+settings.json
+.cache
+.idea
+.js.map
+.log
+.Trashes
+.DS_Store
+.vscode
