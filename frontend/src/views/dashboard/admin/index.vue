@@ -18,7 +18,7 @@
     <el-card class="box-card">
       <div slot="header" class="clearfix">
           <label>Clusters: &nbsp;&nbsp;</label>
-          <el-select v-model="value" placeholder="请选择">
+          <el-select v-model="value" placeholder="Please Select">
             <el-option
               v-for="item in options"
               :key="item.value"
@@ -28,9 +28,6 @@
           </el-select>
       </div>
       <div class="chart-wrapper">
-        <div class="filter-container">
-         
-        </div>
         <el-row :gutter="32">
           <el-col :xs="24" :sm="24" :lg="8">
               <pie-chart resource_type="CPU"></pie-chart>
@@ -43,6 +40,12 @@
           </el-col>
         </el-row>
       </div>
+      <el-table :data="clusterInfo" style="width: 100%" show-header="false" stripe :row-class-name="tableRowClassName">
+        <el-table-column prop="key">
+        </el-table-column>
+        <el-table-column prop="value">
+        </el-table-column>
+      </el-table>
     </el-card>
   </div>
 </template>
@@ -75,7 +78,41 @@ export default {
         value: '选项5',
         label: 'cluster-agile6v-5'
       }],
-      value: ''
+      value: '',
+      clusterInfo: [ {
+        key: 'Type',
+        value: 'DCOS'
+      }, {
+        key: 'Name',
+        value: 'agile6v-testing'
+      }, {
+        key: 'Mesos-Master',
+        value: 'http://127.0.0.1:5050'
+      }, {
+        key: 'Marathon',
+        value: 'http://127.0.0.1:8080'
+      }, {
+        key: 'Chronos',
+        value: 'http://127.0.0.1:9090'
+      }, {
+        key: 'Jobs',
+        value: '50'
+      }, {
+        key: 'Nodes',
+        value: '100'
+      }, {
+        key: 'Containers',
+        value: '1000'
+      }]
+    }
+  },
+  methods: {
+    tableRowClassName({ row, rowIndex }) {
+      if (rowIndex % 2 !== 0) {
+        return 'warning-row'
+      } else {
+        return ''
+      }
     }
   }
 }
@@ -91,11 +128,15 @@ export default {
   .chart-wrapper {
     background: #fff;
     padding: 0px 16px 0;
-    margin-bottom: 15px;
     .filter-container {
       display: table;
-      margin-bottom: 20px;
     }
+  }
+  .warning-row {
+    background: oldlace;
+  }
+  .el-table .success-row {
+    background: #f0f9eb;
   }
 }
 </style>
